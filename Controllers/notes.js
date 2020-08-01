@@ -34,35 +34,38 @@ exports.homePage = async (req, res) => {
 // create notes
 exports.createNotes = async (req, res) => {
   createNote(req, (data) => {
-    if (data.title === undefined ||
-      data.description === undefined ||
-      data.directory === undefined) {
-      res.statusCode = 400;
-      res.setHeader("Content-Type", "application/json");
-      const response = errorResponse();
-      return res.end(JSON.stringify(response));
-    }
-    if (
-      data.title.length === 0 ||
-      data.description.length === 0 ||
-      data.directory.length === 0 
-    ) {
-      res.statusCode = 400;
-      res.setHeader("Content-Type", "text/html");
-      res.end(`
+    try {
+      if (
+        data.title === undefined ||
+        data.description === undefined ||
+        data.directory === undefined
+      ) {
+        res.statusCode = 400;
+        res.setHeader("Content-Type", "application/json");
+        const response = errorResponse();
+        return res.end(JSON.stringify(response));
+      }
+      if (
+        data.title.length === 0 ||
+        data.description.length === 0 ||
+        data.directory.length === 0
+      ) {
+        res.statusCode = 400;
+        res.setHeader("Content-Type", "text/html");
+        res.end(`
       <h1 style="text-align: center; margin-top: 120px;">Oh No! Something happened</h1>
       <h3 style="text-align: center; margin-top: 60px;">Title, Directory and Description fields cannot be empty!</h3>
       <h3 style="margin-top: 60px; text-align: center;"><a href="/" >Take me back</a></h3>
-      `)
-    }
+      `);
+      }
 
-    try {
       if (!fs.existsSync(data.title)) {
         fs.mkdirSync(`Database/${data.directory}`, {
           recursive: true,
           mode: 0o77,
         });
       }
+
       res.statusCode = 201;
       const response = {
         success: true,
@@ -71,12 +74,13 @@ exports.createNotes = async (req, res) => {
         description: data.description,
       };
       res.end(JSON.stringify(response));
-
       let directory = data.directory;
-      fs.writeFileSync(
-        `Database/${directory}/${data.title}.txt`,
-        data.description
-      );
+      if (data.title.length !== 0) {
+        fs.writeFileSync(
+          `Database/${directory}/${data.title}.txt`,
+          data.description
+        );
+      }
     } catch (err) {
       console.log(err);
     }
