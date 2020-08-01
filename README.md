@@ -14,7 +14,8 @@ Built with nodejs built-in modules.
 ![image](https://user-images.githubusercontent.com/61969703/89104891-84c29300-d414-11ea-94f5-aba2f5d492d9.png)
 
 
-### GET request - /note, params: title, description
+### GET request - /note
+### params: title, description
 ![image](https://user-images.githubusercontent.com/61969703/89105094-1ed70b00-d416-11ea-8b00-7b5c8df2b120.png)
 
 ![image](https://user-images.githubusercontent.com/61969703/89105244-64480800-d417-11ea-8bab-e158f18edaa1.png)
