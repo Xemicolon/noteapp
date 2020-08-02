@@ -20,5 +20,4 @@ Built with nodejs built-in modules.
 
 ![image](https://user-images.githubusercontent.com/61969703/89105244-64480800-d417-11ea-8bab-e158f18edaa1.png)
 
-![image](https://user-images.githubusercontent.com/61969703/89122234-96ac4080-d4bd-11ea-9d6d-0f661120a0eb.png)
-
+![image](https://user-images.githubusercontent.com/61969703/89122261-c5c2b200-d4bd-11ea-8d16-6c9ad1a1d2c8.png)
