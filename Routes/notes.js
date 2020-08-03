@@ -8,7 +8,7 @@ const {
   errorPage,
 } = require("../Controllers/notes");
 
-exports.notes = http.createServer((req, res) => {
+exports.server = http.createServer((req, res) => {
   const reqUrl = url.parse(req.url, true);
   if (reqUrl.pathname === "/" && req.method === "GET") {
     homePage(req, res);
