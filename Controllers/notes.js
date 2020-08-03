@@ -76,9 +76,9 @@ exports.createNotes = async (req, res) => {
       res.end(JSON.stringify(response));
       let directory = data.directory;
       if (data.title.length !== 0) {
-        fs.writeFileSync(
+        fs.appendFileSync(
           `Database/${directory}/${data.title}.txt`,
-          data.description
+          `\n${data.description}`, 'utf8'
         );
       }
     } catch (err) {
