@@ -18,15 +18,6 @@ exports.createNote = (req, res) => {
   }
 };
 
-function readData(err, data) {
-  console.log(data);
-}
-exports.getFile = (folder, file) => {
-  const folderName = "../" + folder;
-  const directoryPath = path.join(__dirname, folderName);
-  fs.readFileSync(`${directoryPath}/${file}`, "utf-8", readData);
-};
-
 exports.errorResponse = () => {
   return {
     success: false,

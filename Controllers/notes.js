@@ -1,10 +1,8 @@
 const fs = require("fs");
 const {
   createNote,
-  getFile,
   errorResponse,
   successResponse,
-  errorResponseHtml,
 } = require("../Utils/noteFn");
 const path = require("path");
 const url = require("url");
@@ -65,7 +63,6 @@ exports.createNotes = async (req, res) => {
           mode: 0o77,
         });
       }
-
       res.statusCode = 201;
       const response = {
         success: true,
@@ -78,7 +75,8 @@ exports.createNotes = async (req, res) => {
       if (data.title.length !== 0) {
         fs.appendFileSync(
           `Database/${directory}/${data.title}.txt`,
-          `${data.description}\n`, 'utf8'
+          `${data.description}\n`,
+          "utf8"
         );
       }
     } catch (err) {
