@@ -9,7 +9,6 @@ const url = require("url");
 
 exports.homePage = async (req, res) => {
   req.statusCode = 200;
-
   res.setHeader("Content-Type", "text/html");
   res.end(
     `<h1 style="text-align: center; margin-top: 150px;">Welcome to my Notes App!</h1>
@@ -115,4 +114,12 @@ exports.getNote = async (req, res) => {
     };
     res.end(JSON.stringify(response));
   }
+};
+
+exports.errorPage = async (req, res) => {
+  req.statusCode = 404;
+  res.setHeader("Content-Type", "text/html");
+  res.end(`<h1 style="text-align: center; margin-top: 250px;">HOW DID YOU GET HERE?</h1>
+      <h1 style="text-align: center;"><a href="/" style="font-size: 24px;">Take me back</a></h1>
+      `);
 };
