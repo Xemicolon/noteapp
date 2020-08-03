@@ -1,7 +1,12 @@
 const http = require("http");
 const url = require("url");
 const { warning, info, success } = require("../Utils/logger");
-const { homePage, createNotes, getNote, errorPage } = require("../Controllers/notes");
+const {
+  homePage,
+  createNotes,
+  getNote,
+  errorPage,
+} = require("../Controllers/notes");
 
 exports.notes = http.createServer((req, res) => {
   const reqUrl = url.parse(req.url, true);
@@ -15,7 +20,7 @@ exports.notes = http.createServer((req, res) => {
     createNotes(req, res);
     info(201, req.method + " " + req.url);
   } else {
-    errorPage(req, res)
-    warning(404, req.method + " " + req.url)
+    errorPage(req, res);
+    warning(404, req.method + " " + req.url);
   }
 });
