@@ -117,7 +117,7 @@ exports.createNotes = async (req, res) => {
 
       if (data.title.length !== 0 && !fs.existsSync(title)) {
         fs.writeFileSync(
-          `Database/${directory}/${data.title}.txt`,
+          title,
           `${data.description}\n`,
           "UTF-8"
         );
