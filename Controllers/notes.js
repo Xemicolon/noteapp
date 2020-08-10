@@ -86,6 +86,7 @@ exports.errorPage = async (req, res) => {
 
 // create notes
 exports.createNotes = async (req, res) => {
+  const filePath = path.join(__dirname, "../Database");
   Note(req, (data) => {
     try {
       if (
@@ -103,12 +104,11 @@ exports.createNotes = async (req, res) => {
       }
 
       if (!fs.existsSync(`Database/${data.directory}`)) {
-        fs.mkdirSync(`Database/${data.directory}`, {
+        fs.mkdirSync(filePath + `/${data.directory}`, {
           recursive: true,
           mode: 0o77,
         });
       }
-
       let directory = data.directory;
       const title = path.join(
         __dirname,
@@ -216,7 +216,7 @@ exports.getNote = async (req, res) => {
   }
 };
 
-// get all notes 
+// get all notes
 exports.getNotes = async (req, res) => {
   res.setHeader("Content-Type", "text/html");
   const reqUrl = url.parse(req.url, true);
@@ -265,12 +265,14 @@ exports.deleteNote = async (req, res) => {
     <h3>Number of Notes: ${data.length}</h3>
     <h3>Notes: </h3><p>${data.toString()}</p>
     `);
-    if(data.length === 0){
-      fs.rmdirSync(filePath + `/${reqUrl.query.directory}`)
-      res.write(`<p>Folder has been succesffully deleted because it is empty.</p>`)
+    if (data.length === 0) {
+      fs.rmdirSync(filePath + `/${reqUrl.query.directory}`);
+      res.write(
+        `<p>Folder has been succesffully deleted because it is empty.</p>`
+      );
     }
-    res.write(`<a href="/delete">Go back</a> or <a href="/">Go home</a>`)
-    res.end()
+    res.write(`<a href="/delete">Go back</a> or <a href="/">Go home</a>`);
+    res.end();
   } catch (err) {
     console.log(err);
     res.statusCode = 404;
