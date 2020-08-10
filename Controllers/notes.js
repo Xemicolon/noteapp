@@ -106,7 +106,6 @@ exports.createNotes = async (req, res) => {
       if (!fs.existsSync(`Database/${data.directory}`)) {
         fs.mkdirSync(filePath + `/${data.directory}`, {
           recursive: true,
-          mode: 0o77,
         });
       }
       let directory = data.directory;
