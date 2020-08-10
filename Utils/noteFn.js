@@ -2,7 +2,7 @@ const fs = require("fs");
 const { parse } = require("querystring");
 const path = require("path");
 
-exports.createNote = (req, res) => {
+exports.Note = (req, res) => {
   const FORM_URLENCODED = "application/x-www-form-urlencoded";
   if (req.headers["content-type"] === FORM_URLENCODED) {
     let body = "";
@@ -36,3 +36,11 @@ exports.successResponse = (directory, title, description) => {
     description: description,
   };
 };
+
+exports.displayNotes = (data) => {
+  data.forEach(item => {
+    `<p>${item}</p>`
+    console.log(item)
+    return
+  })
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Note</title>
+    <style>
+        .head {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .link {
+            margin-top: 30px;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 300px; margin: auto">
+        <h1 class="head">View Note</h1>
+        <form style="display: grid;" action="/note" method="GET">
+            <label style="margin-bottom: 10px;">File (Name of your note file)</label>
+            <input type="text" name="title" placeholder="Name of your note file"
+                style="padding: 12px; margin-bottom: 20px" />
+            <label style="margin-bottom: 10px;">Directory (Where you want your note saved to)</label>
+            <input type="text" name="directory" placeholder="Enter the name of directory"
+                style="padding: 12px; margin-bottom: 20px" />
+            <button
+                style="background-color: #7ac47a; padding: 10px; color: #fff; cursor: pointer; font-size: 20px; font-weight: 600;"
+                type="submit">Get Note</button>
+        </form>
+        <div class="link"><a href="/">GO BACK HOME</a></div>
+    </div>
+</body>
+
+</html>
