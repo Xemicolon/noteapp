@@ -36,11 +36,3 @@ exports.successResponse = (directory, title, description) => {
     description: description,
   };
 };
-
-exports.displayNotes = (data) => {
-  data.forEach(item => {
-    `<p>${item}</p>`
-    console.log(item)
-    return
-  })
-}

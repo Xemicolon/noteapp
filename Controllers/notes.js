@@ -102,7 +102,7 @@ exports.createNotes = async (req, res) => {
       `);
       }
 
-      if (!fs.existsSync(data.directory)) {
+      if (!fs.existsSync(`Database/${data.directory}`)) {
         fs.mkdirSync(`Database/${data.directory}`, {
           recursive: true,
           mode: 0o77,
